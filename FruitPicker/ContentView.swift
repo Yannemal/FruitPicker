@@ -12,10 +12,12 @@ struct ContentView: View {
     @State private var favoriteFruit1 = "🍈"
     @State private var favoriteVeg1 = "🥕"
     @State private var favoriteSalad1 = "🥦"
+    @State private var favoriteDrink1 = "🧋"
     // constant data:
     let fruitArray = ["🍏", "🍐", "🍋", "🍌", "🍅", "🍍", "🥝", "🫐", "🍑", "🥭", "🥥", "🍓", "🍊", "🍇", "🍎", "🥑", "🍉"]
     let vegArray = ["🫚", "🧄", "🧅", "🍠", "🫒",  "🥒", "🌶️", "🍆", "🫑", "🌽", "🥕", "🫛"]
     let saladArray = ["🥦", "🥬"]
+    let drinkArray = ["🍺", "☕️", "🍷", "🥛",]
     
     var body: some View {
     // the ViewDidLoad of SwiftUI
@@ -78,6 +80,25 @@ struct ContentView: View {
                         .italic()
                 }
                 
+                // new Picker test
+                Section{
+                    Text("Drinks Tray")
+                        .foregroundColor(.blue)
+                        .bold()
+                        .fontDesign(.monospaced)
+                    
+                   Picker("add your drink", selection: $favoriteDrink1)
+                    {
+                        ForEach(drinkArray, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    
+                    Text("the .segmented Picker Menu shows an animated sliding button for items to pick")
+                        .foregroundColor(.red)
+                        .italic()
+                }
             }
             .navigationTitle("🍓FruitPicker v2🍐")
         }
